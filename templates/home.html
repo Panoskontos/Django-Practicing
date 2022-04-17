@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<h1>Home</h1>
+
+{% for i in product %}
+<div>
+    <a href="{% url 'remove_product_from_basket' i.name %}">
+        <i class="bi bi-dash-circle"></i>
+    </a>
+    &nbsp;
+    {{i}}
+    &nbsp; {{i.price}}$
+    &nbsp;
+    <a href="{% url 'add_to_basket' i.name %}">
+        <i class="bi bi-plus-circle"></i>
+    </a>
+</div>
+
+{% endfor %}
+
+<div>
+    <h3>Basket</h3>
+    <br>
+    <h3>Total items: {{Basketitems}}</h3>
+    {% for i,j in frequencies.items %}
+        {{i}}
+        &nbsp;
+        {{j}}
+        <br>
+    {% endfor %}
+    <br>
+    {{total}} $
+</div>
+
+<br>
+<a href="{% url 'checkout' %}">Go to checkout</a>
